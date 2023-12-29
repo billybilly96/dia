@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gold Price Prediction</title>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+	<ul>
+		{% for item in nav.top %}
+			<li class="{{ 'active' if item.is_active else '' }}">
+				<a href="{{ item.url }}">{{ item.label }}</a>
+			</li>
+		{% endfor %}
+	</ul>
+	<h1>Predizione dell'andamento del prezzo dell'oro</h1>
+	<div class="table-container clearfix">
+		{% for table in tables %}
+		{{ table|safe }}
+		{% endfor %}
+	</div>
+	<div>
+		<p>Il dataset contiene {{ length }} valori dal 1979 al 2018. Ho mostrato rispettivamente i primi 5 valori e gli ultimi 5 valori, con le rispettive date.</p>
+	</div>
+	<div class="table-diff clearfix">
+		{{ gold_diff|safe }}
+	</div>
+	<div>
+		<p>Questa tabella raffigura la variazione del prezzo da un giorno all'altro.</p>
+	</div>
+</body>
+</html>
